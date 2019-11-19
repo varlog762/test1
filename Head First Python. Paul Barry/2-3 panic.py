@@ -1,20 +1,15 @@
-#Gregory Pereverzev 15.11.2019
+#Gregory Pereverzev 15.11.2019 - 19.11.2019
 
 phrase = 'Don\'t panic!'
 plist = list(phrase)
 print(phrase)
 print(plist)
 
-list0 = ['o', 'n', ' ', 't', 'a', 'p']
-list1 = []
+new_plist = plist[1:3]
+new_plist.extend(plist[4:8])
+new_plist.insert(-2, new_plist.pop())
+new_plist.insert(2, new_plist.pop(-2))
 
-for ch in phrase:
-    if ch in list0:
-        if ch not in list1:
-            list1.append(ch)
-print(list1)
-
-
-new_phrase = ' '.join(plist)
+new_phrase = ' '.join(new_plist)
 print(plist)
 print(new_phrase)
