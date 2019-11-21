@@ -18,4 +18,5 @@ for letter in word:
     if letter in vowels:
         found[letter] +=1
 #Выводим содержимое словаря найденных букв.
-print(found)
+for k in found:
+    print(k, found[k])
