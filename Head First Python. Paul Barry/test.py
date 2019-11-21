@@ -1,4 +1,3 @@
-a = 0
-for i in range(0, 10):
-    a += 1
-    print(a)
+dict = {}
+dict.setdefault("key", 10)
+print(dict)
