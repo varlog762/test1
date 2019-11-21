@@ -1,9 +1,4 @@
-vowels = ['a', 'e', 'i', 'o', 'u']
-
-word = 'Milliways'
-
-for ch in vowels:
-    if ch in word:
-        print("yes")
-    else:
-        print('no')
+a = 0
+for i in range(0, 10):
+    a += 1
+    print(a)
