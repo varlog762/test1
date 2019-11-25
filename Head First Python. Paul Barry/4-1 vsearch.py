@@ -3,7 +3,7 @@
 
 def search4vowels(phrase:str) -> set:
     '''Возвращает гласные, найденные в указанной фразе.'''
-    vowels = ser('aeiou')
+    vowels = set('aeiou')
     return vowels.intersection(set(phrase))
 
 
@@ -11,4 +11,4 @@ def search4letters(phrase:str, letters:str) -> set:
     '''Возвращает множество букв из letters, найденных в указанной фразе.'''
     return set(letters).intersection(set(phrase))
 
-#print(search4letters('fbviweo', 'v'))
+print(search4letters('fbviweo', 'v'))
