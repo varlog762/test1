@@ -8,7 +8,7 @@ def search4vowels(phrase:str) -> set:
 
 
 def search4letters(phrase:str, letters:str) -> set:
-    '''Возвращает множество букв из letters, найденное в указанной фразе.'''
+    '''Возвращает множество букв из letters, найденных в указанной фразе.'''
     return set(letters).intersection(set(phrase))
 
 #print(search4letters('fbviweo', 'v'))
