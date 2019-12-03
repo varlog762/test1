@@ -11,15 +11,15 @@ def hello() ->str:
 
 
 
-@app.route('/search4')
+@app.route('/search4', methods = ['POST'])
 def do_search() ->str:
     set0 = search4letters('life, the universe, and everything!', 'eiru,!')
 
     return str(set0)
 
-@app.route('/entry', methods = ['POST'])
+@app.route('/entry')
 def entry_page():
     return render_template('entry.html',
                            the_title='Welcome to search4letter on the web!')
 
-app.run()
+app.run(debug = True)
