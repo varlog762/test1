@@ -17,7 +17,7 @@ def do_search() ->str:
 
     return str(set0)
 
-@app.route('/entry', methods = ['POST', 'GET'])
+@app.route('/entry', methods = ['GET', 'POST'])
 def entry_page():
     return render_template('entry.html',
                            the_title='Welcome to search4letter on the web!')
