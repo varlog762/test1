@@ -1,5 +1,5 @@
 '''Gregoty Pereverzev 02.12.2019'''
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from vsearch import search4letters
 
 
@@ -13,9 +13,10 @@ def hello() ->str:
 
 @app.route('/search4', methods = ['POST'])
 def do_search() ->str:
-    set0 = search4letters('life, the universe, and everything!', 'eiru,!')
+    phrase = request.form['phrase']
+    letters = request.form['letters']
 
-    return str(set0)
+    return str(search4letters(phrase, letters)
 
 @app.route('/entry')
 def entry_page():
