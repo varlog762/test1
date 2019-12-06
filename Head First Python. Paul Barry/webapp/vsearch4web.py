@@ -16,10 +16,10 @@ def do_search() ->str:
     phrase = request.form['phrase']
     letters = request.form['letters']
 
-    return str(search4letters(phrase, letters)
+    return str(search4letters(phrase, letters))
 
 @app.route('/entry')
-def entry_page():
+def entry_page() ->'html':
     return render_template('entry.html',
                            the_title='Welcome to search4letter on the web!')
 
