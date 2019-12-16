@@ -1,5 +1,5 @@
 '''Gregoty Pereverzev 02.12.2019'''
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, escape
 from vsearch import search4letters
 
 
@@ -17,7 +17,7 @@ def entry_page() ->'html':
 
 def log_request(req: 'flask_request', res: str) -> None:
     with open('vsearch.log', 'a') as log:
-        print(req, res, file=log)
+        print(str(dir(req)), res, file=log)
 
 
 
@@ -27,12 +27,20 @@ def do_search() ->'html':
     letters = request.form['letters']
     title = 'Here are your result: '
     results = str(search4letters(phrase, letters))
-    log_request(phrase + letters, results)
+    log_request(request, results)
     return render_template('results.html',
                            the_title = title,
                            the_phrase = phrase,
                            the_letters = letters,
                            the_results = results)
+
+
+
+@app.route('/viewlog')
+def view_the_log() ->str:
+    with open('vsearch.log') as log:
+        contents = log.read()
+    return escape(contents)
 
 
 
