@@ -8,36 +8,38 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def hello() ->str:
-    return 'Hello world from Flask'
+@app.route('/entry')
+def entry_page() ->'html':
+    '''Выводит стартовую приветственную таблицу и предлагает
+    ввести фразу и перечень букв для поиска.'''
+    return render_template('entry.html',
+                           the_title='Welcome to search4letter on the web!')
 
 
 
 def log_request(req: 'flask_request', res: str) -> None:
-    with open('vsearch.log', 'a') as vsearch_log:
-        print(req + ' ' + res, file=vsearch_log)
+    '''Записывает пользовательский запрос и результат работы do_search в лог-файл.'''
+    with open('vsearch.log', 'a') as log:
+        print(req, res, file=log)
 
 
 
 @app.route('/search4', methods = ['POST'])
-def do_search() ->str:
+def do_search() ->'html':
+    '''Принимает пользовательский ввод, обрабатывает, вызывает функцию логирования
+     и выводит страницу с результами обработки'''
     phrase = request.form['phrase']
     letters = request.form['letters']
     title = 'Here are your result: '
     results = str(search4letters(phrase, letters))
-    log_request(phrase)
-
-    return render_template('result.html',
+    log_request(phrase + letters, results)
+    return render_template('results.html',
                            the_title = title,
                            the_phrase = phrase,
                            the_letters = letters,
                            the_results = results)
 
-@app.route('/entry')
-def entry_page() ->'html':
-    return render_template('entry.html',
-                           the_title='Welcome to search4letter on the web!')
+
 
 if __name__ == '__main__':
         app.run(debug = True)
-
